@@ -1,0 +1,22 @@
+id = id: unique id of message (48 chars)
+flags = flags: unknown, preserving (shortint)
+from.first_name = first_name
+from.last_name = last_name
+to.first_name = first_name
+to.last_name = last_name
+text = message (long)
+date = timestamp (10-digit int)
+media.type = mediatype
+	document|unsupported: note regrets
+	photo: 
+		media.caption
+		note regrets
+	contact:
+		media.phone: 10-digit numbers
+		media.last_name
+		media.first_name
+	webpage:
+		media.url: URLy
+		media.description: long
+		media.title: shortish
+
