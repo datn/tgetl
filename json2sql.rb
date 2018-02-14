@@ -46,7 +46,7 @@ def process_hash(recordh, current_key, hash)
 			else
 				$columns[combined_key]=3 if ( !$columns.key?(combined_key) ) or ( 3 > $columns[combined_key] )
 			end
-      			$lengths[combined_key] = value.to_s.length unless $lengths[combined_key] and value <= $lengths[combined_key]
+      			$lengths[combined_key] = value.to_s.length if ( ! $lengths[combined_key]) or ( value.to_s.length > $lengths[combined_key] )
 		end
 	end
 end
@@ -55,9 +55,8 @@ File.readlines(jsonfile).each do |line|
 	recordh = {}
         eachone = JSON.parse(line)
 	process_hash(recordh, '', eachone)
-p $columns
-  p "----------------------------"
-  p $lengths
-  p "----------------------------"
-  p recordh
 end
+
+p $columns
+p "----------------------------"
+p $lengths
